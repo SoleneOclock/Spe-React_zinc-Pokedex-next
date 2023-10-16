@@ -16,9 +16,22 @@ import Counter from '@/components/Counter';
 import PokemonCard from '@/components/PokemonCard';
 
 const getData = async () => {
-  const response = await fetch('https://api-pokemon-fr.vercel.app/api/v1/gen/9');
+  // si je suis en dev :
+  let apiURL: string | undefined = '';
+  if (process.env.NODE_ENV === 'development') {
+    // on recupere l'adresse depuis le fichier .env.local
+    // le contenu de ce fichier n'est pas partagé : son contenu est secret !!
+    apiURL = process.env.NEXT_PUBLIC_API_URL;
+  } else {
+    // si je suis en prod : (ici c'est le mm adresse mais dans la vraie vie elle serait différente)
+    apiURL = process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (!apiURL) {
+    apiURL = '';
+  }
+
+  const response = await fetch(apiURL);
   const pokemonList = await response.json();
-  console.log(pokemonList);
   // dans le tableau pokemonList on a nos objets pokemon
 
   return pokemonList;
@@ -29,7 +42,7 @@ const getData = async () => {
 export default async function Home() {
   // recuperer une liste de pokemon d'une API
   // dans le JSX pour chaque pokemon de la list on va afficher un sous composant PokemonCard
-  console.log('rendu du composant Home !!! ');
+  console.log(process.env.NODE_ENV);
 
   const pokemonList = await getData() as IPokemon[];
 
