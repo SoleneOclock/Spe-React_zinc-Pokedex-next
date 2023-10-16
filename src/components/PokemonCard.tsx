@@ -1,6 +1,12 @@
 // sans ajout de 'use client';, ce composant sera rendu coté server
 
-function PokemonCard({ pokemon }) {
+import { IPokemon } from '@/@types/pokemon';
+
+interface PokemonCardProps {
+  pokemon: IPokemon;
+}
+
+function PokemonCard({ pokemon }: PokemonCardProps) {
   return (
     <div className="bg-cyan-900 rounded-lg shadow-lg p-4 flex flex-col w-full hover:bg-cyan-800">
       <img

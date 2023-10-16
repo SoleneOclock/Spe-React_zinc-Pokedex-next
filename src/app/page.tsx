@@ -10,6 +10,7 @@
 // c'est un peu dommage de mettre un useclient sur la page sinon y'a plus de ssr
 // donc on va plutot faire des sous composants client et garder nos pages en server
 
+import { IPokemon } from '@/@types/pokemon';
 import Counter from '@/components/Counter';
 import PokemonCard from '@/components/PokemonCard';
 
@@ -29,8 +30,7 @@ export default async function Home() {
   // dans le JSX pour chaque pokemon de la list on va afficher un sous composant PokemonCard
   console.log('rendu du composant Home !!! ');
 
-  const pokemonList = await getData();
-  console.log(pokemonList);
+  const pokemonList = await getData() as IPokemon[];
 
   return (
     <main>
@@ -40,7 +40,7 @@ export default async function Home() {
         </h1>
         <Counter />
 
-        <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 p-2'>
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 p-2">
           {
             pokemonList.map((pokemon) => (
               <PokemonCard key={pokemon.pokedexId} pokemon={pokemon} />
