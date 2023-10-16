@@ -37,7 +37,7 @@ export default async function Home() {
     <main>
       <div className="bg-cyan-900 min-h-screen">
         <h1 className="text-cyan-400 text-4xl font-bold p-4">
-          Pokedex
+          Pokedex de Soso
         </h1>
         <Counter />
 
