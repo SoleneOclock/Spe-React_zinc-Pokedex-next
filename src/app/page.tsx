@@ -10,6 +10,7 @@
 // c'est un peu dommage de mettre un useclient sur la page sinon y'a plus de ssr
 // donc on va plutot faire des sous composants client et garder nos pages en server
 
+import Link from 'next/link';
 import { IPokemon } from '@/@types/pokemon';
 import Counter from '@/components/Counter';
 import PokemonCard from '@/components/PokemonCard';
@@ -43,7 +44,12 @@ export default async function Home() {
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2 p-2">
           {
             pokemonList.map((pokemon) => (
-              <PokemonCard key={pokemon.pokedexId} pokemon={pokemon} />
+              <Link
+                key={pokemon.pokedexId}
+                href={`/pokemon/${pokemon.name.fr.toLowerCase()}`}
+              >
+                <PokemonCard pokemon={pokemon} />
+              </Link>
             ))
           }
         </div>
