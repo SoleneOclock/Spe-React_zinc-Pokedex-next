@@ -1,9 +1,9 @@
-export default function Home() {
+export default function AboutPage() {
   return (
     <main>
       <div>
         <p>
-          je suis la page
+          A propos de soso
         </p>
       </div>
     </main>
