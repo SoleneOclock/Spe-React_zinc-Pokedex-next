@@ -45,7 +45,7 @@ De base avec l'installeur next on a une config très legerer, si on veut reprend
 `npm install -D eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks`
 `npm install -D eslint-config-airbnb-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser`
 
-et configurer toutça dans le fichier eslintrs.json : 
+et configurer tout ça dans le fichier eslintrs.json : 
 
 ```json
 {
@@ -79,4 +79,39 @@ et configurer toutça dans le fichier eslintrs.json :
   }
 }
 ```
+
+# Tailwind
+
+c'est un framework CSS qui permet de styler nos elements avec des classes (dont le code CSS est déjà écrit) : on écrit pas de CSS !
+
+## Extension VS code pour tailwind
+
+- Tailwind CSS IntelliSense : autocompletion sur les noms de classe
+- Inline fold : cache les classes pour rendre le code plus lisible (parce que sinon on a trop de lignes de noms de classes)
+
+## les unités
+
+une unité par exemple pour faire un padding de 1 "p-1" vaut 4px
+https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale
+
+## les couleurs
+
+beaucoup de couleurs sont inclues dans les noms de classes : 
+https://tailwindcss.com/docs/customizing-colors
+
+## bibliotheque de composants
+
+comme semantic-ui-react pour semantic il existe une bibliotheque de composants pour tailwind : https://www.flowbite-react.com/
+
+
+# Next SSR
+
+Par defaut tous les composants sont rendu coté serveur.
+-> nos console.log s'afficherons dans la console du serveur (dans le terminal) et non dans la console du navigateur car le render s'execute AVANT l'envoie de la page au navigateur.
+
+Si jamais on a besoin de useState, useEffect, d'events utilisateur (onClick), on doit préciser que le composant sera rendu coté client : on ajoute tout en haut du fichier la ligne 
+```js
+'useclient';
+```
+
 
